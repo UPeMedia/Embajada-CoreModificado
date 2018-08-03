@@ -119,10 +119,16 @@ class LVCA_Gallery_Carousel {
 
         ?>
 
-        <div class="lvca-gallery-carousel-item <?php echo $style; ?> <?php echo $item_class; ?>">
+        <div class="lvca-gallery-carousel-item <?php echo $style; ?> <?php echo $item_class; ?> ez18-carousel-item">
 
-            <div class="lvca-project-image">
-
+            <div class="lvca-project-image ez18-carousel-img">
+                
+                <a class="lvca-video-lightbox"
+                   data-fancybox="<?php echo $this->settings['gallery_class']; ?>"
+                   href="<?php echo $video_url; ?>"
+                   title="<?php echo esc_html($name); ?>"
+                   data-description="<?php echo wp_kses_post($description); ?>">
+                
                 <?php
 
                 if (!empty($link)) {
@@ -150,22 +156,6 @@ class LVCA_Gallery_Carousel {
 
                     <div class="lvca-entry-info">
 
-                        <h3 class="lvca-entry-title">
-
-                            <?php if ($item_type == 'image' && !empty($link)): ?>
-
-                                <a href="<?php echo $link['url']; ?>"
-                                   title="<?php echo esc_html($name); ?>"
-                                   target="<?php echo esc_attr($link['target']); ?>"><?php echo esc_html($name); ?></a>
-
-                            <?php else: ?>
-
-                                <?php echo esc_html($name); ?>
-
-                            <?php endif; ?>
-
-                        </h3>
-
                         <?php if ($item_type == 'youtube' || $item_type == 'vimeo') : ?>
 
                             <?php
@@ -173,12 +163,7 @@ class LVCA_Gallery_Carousel {
                             ?>
                             <?php if (!empty($video_url)) : ?>
 
-                                <a class="lvca-video-lightbox"
-                                   data-fancybox="<?php echo $this->settings['gallery_class']; ?>"
-                                   href="<?php echo $video_url; ?>"
-                                   title="<?php echo esc_html($name); ?>"
-                                   data-description="<?php echo wp_kses_post($description); ?>"><i
-                                            class="lvca-icon-video-play"></i></a>
+                                <span class="fa-stack fa-lg"><i class="fa fa-circle-thin fa-stack-2x"></i><i class="fa fa-plus fa-stack-1x"></i></span>
 
                             <?php endif; ?>
 
@@ -245,8 +230,24 @@ class LVCA_Gallery_Carousel {
 
 
                 </div>
-
+                </a>
             </div>
+
+                        <h3 class="lvca-entry-title">
+
+                            <?php if ($item_type == 'image' && !empty($link)): ?>
+
+                                <a href="<?php echo $link['url']; ?>"
+                                   title="<?php echo esc_html($name); ?>"
+                                   target="<?php echo esc_attr($link['target']); ?>"><?php echo esc_html($name); ?></a>
+
+                            <?php else: ?>
+
+                                <?php echo esc_html($name); ?>
+
+                            <?php endif; ?>
+
+                        </h3>
 
         </div><!--.lvca-gallery-carousel-item -->
 
