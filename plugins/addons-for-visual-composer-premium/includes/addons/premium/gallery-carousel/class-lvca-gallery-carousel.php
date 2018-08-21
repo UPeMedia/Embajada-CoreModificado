@@ -123,12 +123,6 @@ class LVCA_Gallery_Carousel {
 
             <div class="lvca-project-image ez18-carousel-img">
                 
-                <a class="lvca-video-lightbox"
-                   data-fancybox="<?php echo $this->settings['gallery_class']; ?>"
-                   href="<?php echo $video_url; ?>"
-                   title="<?php echo esc_html($name); ?>"
-                   data-description="<?php echo wp_kses_post($description); ?>">
-                
                 <?php
 
                 if (!empty($link)) {
@@ -162,8 +156,13 @@ class LVCA_Gallery_Carousel {
                             $video_url = $video_link;
                             ?>
                             <?php if (!empty($video_url)) : ?>
-
+                                <a class="lvca-video-lightbox"
+                   data-fancybox="<?php echo $this->settings['gallery_class']; ?>"
+                   href="<?php echo $video_url; ?>"
+                   title="<?php echo esc_html($name); ?>"
+                   data-description="<?php echo wp_kses_post($description); ?>">
                                 <span class="fa-stack fa-lg"><i class="fa fa-circle-thin fa-stack-2x"></i><i class="fa fa-plus fa-stack-1x"></i></span>
+                        </a>
 
                             <?php endif; ?>
 
@@ -230,7 +229,6 @@ class LVCA_Gallery_Carousel {
 
 
                 </div>
-                </a>
             </div>
 
                         <h3 class="lvca-entry-title">
