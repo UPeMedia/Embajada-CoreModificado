@@ -1,4 +1,4 @@
-<div class="ig-container">
+<div class="ig-container pag-chance">
 	<div class="hn-container">
 		<div class="jbp-job-single">
 			<?php
@@ -11,16 +11,19 @@
 					</div>
 				</div>
 			<?php } ?>
-			<div class="row hn-border hn-border-round jobs-meta">
+			<div class="row jobs-meta">
 				<div class="col-md-3 jobs-meta-row">
+                    <i class="fa fa-money" aria-hidden="true"></i>
 					<h5><?php _e( 'Job Budget', je()->domain ); ?></h5>
 					<small class="text-warning"><?php $model->render_prices() ?></small>
 				</div>
 				<div class="col-md-3 jobs-meta-row">
-					<h5><?php _e( 'This job open for', je()->domain ) ?></h5>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <h5><?php _e( 'This job open for', je()->domain ) ?></h5>
 					<small class="text-warning"><?php echo $model->get_due_day() ?></small>
 				</div>
 				<div class="col-md-3 jobs-meta-row">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
 					<h5><?php _e( 'Must be completed by', je()->domain ) ?></h5>
 					<?php if ( strtotime( $model->dead_line ) ): ?>
 						<small
@@ -31,24 +34,7 @@
 				</div>
 
 				<div class="col-md-3 jobs-meta-row">
-					<?php if ( strtolower( $model->get_due_day() ) != 'expired' && je()->settings()->job_contact_form == 0 ): ?>
-						<?php if ( JobsExperts_Helper::is_user_pro( get_current_user_id() ) ): ?>
-							<?php ob_start(); ?>
-							<a class="btn btn-info btn-sm jbp_contact_job"
-							   href="<?php echo esc_url( add_query_arg( array(
-								   'contact' => get_post()->post_name
-							   ), apply_filters( 'jbp_job_contact_link', get_permalink( je()->pages->page( JE_Page_Factory::JOB_CONTACT ) ), get_the_ID() ) ) ) ?>"><?php _e( 'Contact', je()->domain ) ?></a>
-							<?php $content = ob_get_clean();
-							echo apply_filters( 'jbp_job_contact_btn', $content, $model );
-							?>
-						<?php else: ?>
-							<a class="btn btn-info btn-sm"
-							   href="<?php echo get_permalink( je()->pages->page( JE_Page_Factory::EXPERT_ADD ) ) ?>"><?php _e( 'Become Expert', je()->domain ) ?></a>
-						<?php endif; ?>
-					<?php else: ?>
-						<a disabled class="btn btn-info btn-sm"
-						   href="#"><?php _e( 'Contact', je()->domain ) ?></a>
-					<?php endif; ?>
+					<a href="#" type="button" class="btn btn-sm btn-primary message-me-btn">Aplicar</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
